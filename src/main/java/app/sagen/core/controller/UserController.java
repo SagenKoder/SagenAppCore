@@ -5,6 +5,7 @@ import app.sagen.core.service.SecurityService;
 import app.sagen.core.service.UserService;
 import app.sagen.core.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +27,12 @@ public class UserController {
         this.userValidator = userValidator;
     }
 
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/admin")
+    public String admin() {
+        return "hello";
+    }
+
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
@@ -45,7 +52,7 @@ public class UserController {
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+        return "redirect:/";
     }
 
     @GetMapping("/login")
@@ -59,8 +66,8 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
+    @GetMapping({"/", "/home"})
+    public String home(Model model) {
+        return "home";
     }
 }
