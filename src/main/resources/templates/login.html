@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign in • Sagen.App</title>
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <link rel="icon" href="/img/sagenapp_logo_small.jpg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/font_awesome_all.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="container">
+    <div class="col-12 text-center">
+        <a href="https://login.sagen.app/">
+            <img class="giant-logo img-fluid" src="/img/sagenapp_logo_light.svg"/>
+        </a>
+    </div>
+    <h2 class="text-center text-white login-title">Sign in to all services</h2>
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign In</h5>
+
+                    <div th:if="${(param.error != null) and (param.error[0] == 'true')}" class="alert alert-danger alert-dismissible fade show error-alert" role="alert">
+                        Wrong username or password
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form class="form-signin" th:action="@{/login}" method="post">
+                        <div class="form-label-group">
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Brukernavn" required autofocus>
+                            <label for="username">Brukernavn</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Keep me signed in</label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" name="submit" type="submit" value="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+<script src="/js/three.r92.min.js"></script>
+<script src="/js/vanta.waves.min.js"></script>
+<script>
+    /* Start background animation */
+    VANTA.WAVES({
+        el: "body",
+        shininess: 32.00,
+        waveHeight: 36.50,
+        waveSpeed: 0.55,
+        zoom: 0.83
+    })
+
+    /* Fix autocorrect overlapping label */
+    $(document).ready(function () {
+        setTimeout(function () {
+            var $input = $('input:-webkit-autofill');
+            $input.next("label").addClass('active');
+        }, 100);
+    });
+</script>
+</body>
+</html>
