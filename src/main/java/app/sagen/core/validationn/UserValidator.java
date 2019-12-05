@@ -1,4 +1,4 @@
-package app.sagen.core.validator;
+package app.sagen.core.validationn;
 
 import app.sagen.core.model.User;
 import app.sagen.core.service.UserService;

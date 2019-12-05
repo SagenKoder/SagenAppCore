@@ -3,7 +3,7 @@ package app.sagen.core.controller;
 import app.sagen.core.model.User;
 import app.sagen.core.service.SecurityService;
 import app.sagen.core.service.UserService;
-import app.sagen.core.validator.UserValidator;
+import app.sagen.core.validationn.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
