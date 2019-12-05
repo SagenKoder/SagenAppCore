@@ -25,11 +25,11 @@
                         <!--a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" href="#">Features</a>
                         <a class="nav-item nav-link disabled" href="#">Disabled</a-->
-                        <div class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                        <div class="nav-item dropdown float-right" sec:authorize="isAuthenticated()">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-envelope"></span><span sec:authentication="name"></span>
+                                <span class="fa fa-camera-retro fa-lg"></span><span sec:authentication="name"></span>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-menu ml-auto" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>

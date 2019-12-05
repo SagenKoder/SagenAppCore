@@ -3,11 +3,14 @@
     <head th:include="fragments/layout :: head">
         <title id="title">Home • Sagen.App</title>
     </head>
-    <header th:include="fragments/layout :: header"></header>
     <body>
-        <div class="container mt-5">
-            <h1 class="text-center page-header">Velkommen til Sagen.App</h1>
-            <h1 class="text-center page-header lead">Velg en tjeneste for å gå videre</h1>
+        <header th:include="fragments/layout :: header"></header>
+        <div class="container">
+
+            <div class="mt-5 mb-5">
+                <h1 class="text-center page-header">Velkommen til Sagen.App</h1>
+                <h1 class="text-center page-header lead">Velg en tjeneste for å gå videre</h1>
+            </div>
 
             <div class="d-flex flex-wrap">
 
@@ -62,6 +65,6 @@
 
             </div>
         </div>
+        <footer th:include="fragments/layout :: footer"></footer>
     </body>
-    <footer th:include="fragments/layout :: footer"></footer>
 </html>

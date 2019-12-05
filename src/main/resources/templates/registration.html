@@ -22,34 +22,22 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
-
-                    <div th:if="${error != null}" class="alert alert-danger alert-dismissible fade show error-alert" role="alert">
-                        <span th:text="error"></span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div th:if="${message != null}" class="alert alert-success alert-dismissible fade show error-alert" role="alert">
-                        <span th:text="message"></span>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <form class="form-signin" th:action="@{/login}" method="post">
+                    <h5 class="card-title text-center">Registration</h5>
+                    <form class="form-signin" th:action="@{/registration}" th:object="${userForm}" method="post">
                         <div class="form-label-group">
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Brukernavn" required autofocus>
+                            <input type="text" name="username" id="username" th:field="*{username}" class="form-control" placeholder="Brukernavn" required autofocus>
                             <label for="username">Brukernavn</label>
+                            <span class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
                         </div>
                         <div class="form-label-group">
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                            <input type="password" name="password" id="password" th:field="*{password}" class="form-control" placeholder="Password" required>
                             <label for="password">Password</label>
+                            <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                         </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Keep me signed in</label>
+                        <div class="form-label-group">
+                            <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" placeholder="Confirm password" required>
+                            <label for="password">Confirm password</label>
+                            <span class="text-danger" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" name="submit" type="submit" value="submit">Sign in</button>
                     </form>
