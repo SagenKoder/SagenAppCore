@@ -1,17 +1,6 @@
 version: '3'
 services:
-  local-mysql:
-    container_name: local-mysql
-    image: mysql/mysql-server:5.7
-    environment:
-      MYSQL_DATABASE: sagenappcore
-      MYSQL_ROOT_PASSWORD: sagenappcore123
-      MYSQL_ROOT_HOST: '%'
-    ports:
-      - "3306:3306"
-    restart: always
-
-  registration-login:
+  sagenappcore:
     build: .
     volumes:
       - .:/app
@@ -20,5 +9,3 @@ services:
     ports:
       - 8099:8080
     command: mvn clean spring-boot:run
-    depends_on:
-      - local-mysql
